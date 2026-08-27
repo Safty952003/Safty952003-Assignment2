@@ -5,13 +5,29 @@
         static void Main(string[] args)
         {
             Console.Write("Enter first number: ");
-            double num1 = Convert.ToDouble(Console.ReadLine());
+            if (!double.TryParse(Console.ReadLine(), out double num1))
+            {
+                Console.WriteLine("Invalid number.");
+                return;
+            }
 
             Console.Write("Enter second number: ");
-            double num2 = Convert.ToDouble(Console.ReadLine());
+            if (!double.TryParse(Console.ReadLine(), out double num2))
+            {
+                Console.WriteLine("Invalid number.");
+                return;
+            }
 
             Console.Write("Enter operation (+, -, *, /): ");
-            char operation = Convert.ToChar(Console.ReadLine());
+            string? input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Invalid operation.");
+                return;
+            }
+
+            char operation = input[0];
 
             double result = 0;
 
@@ -30,6 +46,12 @@
                     break;
 
                 case '/':
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("Cannot divide by zero.");
+                        return;
+                    }
+
                     result = num1 / num2;
                     break;
 
