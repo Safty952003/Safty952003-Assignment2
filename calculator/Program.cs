@@ -4,63 +4,76 @@
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter first number: ");
-            if (!double.TryParse(Console.ReadLine(), out double num1))
+            while (true)
             {
-                Console.WriteLine("Invalid number.");
-                return;
-            }
 
-            Console.Write("Enter second number: ");
-            if (!double.TryParse(Console.ReadLine(), out double num2))
-            {
-                Console.WriteLine("Invalid number.");
-                return;
-            }
 
-            Console.Write("Enter operation (+, -, *, /): ");
-            string? input = Console.ReadLine();
+                Console.Write("Enter first number: ");
+                if (!double.TryParse(Console.ReadLine(), out double num1))
+                {
+                    Console.WriteLine("Invalid number.");
+                    return;
+                }
 
-            if (string.IsNullOrEmpty(input))
-            {
-                Console.WriteLine("Invalid operation.");
-                return;
-            }
+                Console.Write("Enter second number: ");
+                if (!double.TryParse(Console.ReadLine(), out double num2))
+                {
+                    Console.WriteLine("Invalid number.");
+                    return;
+                }
 
-            char operation = input[0];
+                Console.Write("Enter operation (+, -, *, /): ");
+                string? input = Console.ReadLine();
 
-            double result = 0;
-
-            switch (operation)
-            {
-                case '+':
-                    result = num1 + num2;
-                    break;
-
-                case '-':
-                    result = num1 - num2;
-                    break;
-
-                case '*':
-                    result = num1 * num2;
-                    break;
-
-                case '/':
-                    if (num2 == 0)
-                    {
-                        Console.WriteLine("Cannot divide by zero.");
-                        return;
-                    }
-
-                    result = num1 / num2;
-                    break;
-
-                default:
+                if (string.IsNullOrEmpty(input))
+                {
                     Console.WriteLine("Invalid operation.");
                     return;
-            }
+                }
 
-            Console.WriteLine($"Result: {result}");
+                char operation = input[0];
+
+                double result = 0;
+
+                switch (operation)
+                {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+
+                    case '-':
+                        result = num1 - num2;
+                        break;
+
+                    case '*':
+                        result = num1 * num2;
+                        break;
+
+                    case '/':
+                        if (num2 == 0)
+                        {
+                            Console.WriteLine("Cannot divide by zero.");
+                            return;
+                        }
+
+                        result = num1 / num2;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid operation.");
+                        return;
+                }
+
+                Console.WriteLine($"Result: {result}");
+
+                Console.Write("Do you want another calculation? (y/n): ");
+                char choice = Convert.ToChar(Console.ReadLine());
+
+                if (choice == 'n')
+                {
+                    break;
+                }
+            }
         }
     }
 }
