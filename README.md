@@ -25,4 +25,4 @@ A simple calculator application built using C# and .NET.
 
 ## Screenshot
 
-![Calculator Screenshot](screenshot.png)
+![Calculator Screenshot](screenshot.png.png)
